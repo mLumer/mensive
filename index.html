@@ -905,7 +905,270 @@
       color: #a25e77;
     }
 
+/* ========================================
+   COUPONS
+======================================== */
 
+.coupon-list {
+  width: min(570px, 100%);
+  display: grid;
+  gap: 11px;
+  margin-top: 10px;
+}
+
+.coupon {
+  width: 100%;
+  min-height: 70px;
+
+  display: grid;
+  grid-template-columns: 65px 1fr;
+  align-items: center;
+
+  border: 1.5px dashed #e3a7ba;
+  border-radius: 15px;
+
+  background: linear-gradient(
+    90deg,
+    #fff0f5,
+    #fff9fb
+  );
+
+  color: #875567;
+  cursor: pointer;
+
+  text-align: left;
+  padding: 10px 18px;
+
+  transition: .3s ease;
+}
+
+.coupon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(180,100,125,.12);
+}
+
+.coupon-number {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c17b94;
+  font-weight: 700;
+}
+
+.coupon-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 18px;
+}
+
+.coupon-result {
+  display: none;
+  grid-column: 2;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+  color: #ad7186;
+}
+
+.coupon.redeemed .coupon-result {
+  display: block;
+}
+
+
+/* DATE MINI GAME */
+
+.date-game {
+  display: none;
+
+  width: min(500px,100%);
+  margin-top: 16px;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background: #fff2f6;
+  border: 1px solid #f1d1dc;
+
+  animation: secretReveal .4s ease;
+}
+
+.date-game.active {
+  display: block;
+}
+
+.date-question {
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+  color: #8e566c;
+  margin-bottom: 14px;
+}
+
+.date-options {
+  display: grid;
+  gap: 8px;
+}
+
+.date-option {
+  border: 1px solid #ecc3d0;
+  background: white;
+
+  color: #875567;
+
+  padding: 11px;
+  border-radius: 12px;
+
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: .25s;
+}
+
+.date-option:hover {
+  background: #ffeaf1;
+  transform: translateY(-2px);
+}
+
+.date-result {
+  display: none;
+
+  margin-top: 15px;
+  padding: 14px;
+
+  border-radius: 13px;
+  background: white;
+
+  color: #9b5f76;
+
+  font-family: "DM Serif Display", serif;
+  line-height: 1.5;
+}
+
+.date-result.show {
+  display: block;
+  animation: secretReveal .4s ease;
+}
+
+.close-game {
+  margin-top: 12px;
+
+  border: none;
+  background: transparent;
+
+  color: #b5748c;
+
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+/* FINAL SURPRISE */
+
+.final-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle,
+      #fff0f6,
+      #f5c1d2
+    );
+
+  z-index: 100;
+  overflow: hidden;
+}
+
+.final-overlay.active {
+  display: flex;
+  animation: finalFade .8s ease;
+}
+
+@keyframes finalFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.final-content {
+  width: min(650px,90%);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.final-content .big-heart {
+  font-size: 55px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.final-content h2 {
+  font-family: "DM Serif Display", serif;
+
+  font-size: clamp(40px,9vw,70px);
+
+  font-weight: 400;
+
+  color: #965a72;
+
+  line-height: 1.05;
+
+  margin: 20px 0;
+}
+
+.final-content p {
+  font-family: "DM Serif Display", serif;
+
+  font-size: 22px;
+
+  line-height: 1.6;
+
+  color: #7c5261;
+}
+
+.final-content .tiny {
+  margin-top: 20px;
+
+  font-family: "Quicksand", sans-serif;
+
+  font-size: 12px;
+
+  color: #a77384;
+}
+
+.final-open-btn {
+  margin-top: 25px;
+
+  border: none;
+
+  background: #d992ab;
+
+  color: white;
+
+  padding: 13px 25px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.final-open-btn:hover {
+  transform: translateY(-3px);
+}
+    
     /* ========================================
        NAVIGATION
     ======================================== */
@@ -1491,8 +1754,183 @@
         </div>
 
 
+        <!-- ========================================
+     COUPON PAGE
+======================================== -->
+
+<div class="page">
+
+  <div class="chapter">
+    chapter six
+  </div>
+
+  <h3>
+    little coupons.
+  </h3>
+
+  <p>
+    some things you can redeem whenever you want ♡
+  </p>
+
+  <div class="coupon-list">
+
+    <!-- NO. 01 -->
+
+    <button
+      class="coupon"
+      onclick="redeemCoupon(this)">
+
+      <span class="coupon-number">
+        no. 01
+      </span>
+
+      <span class="coupon-title">
+        1 free hug ♡
+      </span>
+
+      <span class="coupon-result">
+        come here, you deserve one. ♡
+      </span>
+
+    </button>
+
+
+    <!-- NO. 02 -->
+
+    <button
+      class="coupon"
+      onclick="redeemCoupon(this)">
+
+      <span class="coupon-number">
+        no. 02
+      </span>
+
+      <span class="coupon-title">
+        1 kiss for you 💋
+      </span>
+
+      <span class="coupon-result">
+        this one is saved just for you. ♡
+      </span>
+
+    </button>
+
+
+    <!-- NO. 03 -->
+
+    <button
+      class="coupon"
+      onclick="openDateGame(this)">
+
+      <span class="coupon-number">
+        no. 03
+      </span>
+
+      <span class="coupon-title">
+        1 date with me 🎀
+      </span>
+
+      <span class="coupon-result">
+        redeemed ♡
+      </span>
+
+    </button>
+
+
+    <!-- NO. 04 -->
+
+    <button
+      class="coupon"
+      onclick="redeemCoupon(this)">
+
+      <span class="coupon-number">
+        no. 04
+      </span>
+
+      <span class="coupon-title">
+        unlimited "i love you" 💌
+      </span>
+
+      <span class="coupon-result">
+        good thing this one never runs out. ♡
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- MINI GAME INSIDE COUPON NO. 03 -->
+
+  <div
+    class="date-game"
+    id="dateGame">
+
+    <div class="date-question">
+      choose our date ♡
+    </div>
+
+    <div class="date-options">
+
+      <button
+        class="date-option"
+        onclick="chooseDate()">
+
+        🎬 movie night
+
+      </button>
+
+      <button
+        class="date-option"
+        onclick="chooseDate()">
+
+        🌙 late night talk
+
+      </button>
+
+      <button
+        class="date-option"
+        onclick="chooseDate()">
+
+        🍦 ice cream date
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="date-result"
+      id="dateResult">
+
+      wrong! the correct answer is
+      <strong>
+        all of them with me, xixixi. ♡
+      </strong>
+
+    </div>
+
+
+    <button
+      class="close-game"
+      onclick="closeDateGame()">
+
+      okay okay ♡
+
+    </button>
+
+  </div>
+
+
+  <div class="page-number">
+    06
+  </div>
+
+</div>
+
+
         <!-- ==================================
-             PAGE 6
+             PAGE 7
         ================================== -->
 
         <div class="page">
@@ -1538,7 +1976,7 @@
 
           <div class="page-number">
 
-            06
+            07
 
           </div>
 
@@ -2152,8 +2590,107 @@
 
     loadQuestion();
 
+/* ========================================
+   COUPONS
+======================================== */
 
+function redeemCoupon(card) {
+
+  card.classList.add("redeemed");
+
+  createHeartBurst();
+
+}
+
+
+/* ========================================
+   DATE MINI GAME
+======================================== */
+
+const dateGame =
+  document.getElementById("dateGame");
+
+const dateResult =
+  document.getElementById("dateResult");
+
+
+function openDateGame(card) {
+
+  card.classList.add("redeemed");
+
+  dateGame.classList.add("active");
+
+  dateResult.classList.remove("show");
+
+  createHeartBurst();
+
+}
+
+
+function chooseDate() {
+
+  dateResult.classList.add("show");
+
+  createHeartBurst();
+
+}
+
+
+function closeDateGame() {
+
+  dateGame.classList.remove("active");
+
+}
+
+
+/* ========================================
+   FINAL SURPRISE
+======================================== */
+
+function openFinal() {
+
+  const overlay =
+    document.getElementById("finalOverlay");
+
+  overlay.classList.add("active");
+
+  createHeartBurst();
+
+}
+    
   </script>
+
+  <!-- ========================================
+     FINAL SURPRISE
+======================================== -->
+
+<div
+  class="final-overlay"
+  id="finalOverlay">
+
+  <div class="final-content">
+
+    <div class="big-heart">
+      ♡
+    </div>
+
+    <h2>
+      if i had to choose again,<br>
+      i'd still choose you.
+    </h2>
+
+    <p>
+      happy 2nd mensive, my love. ♡
+    </p>
+
+    <div class="tiny">
+      here's to us, and to everything
+      that's still waiting for us.
+    </div>
+
+  </div>
+
+</div>
 
 </body>
 </html>
