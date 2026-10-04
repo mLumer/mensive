@@ -574,14 +574,14 @@
     }
 
     .book-wrapper {
+  width: min(900px, 100%);
 
-      width:
-        min(900px,100%);
+  min-height: 650px;
 
-      min-height: 650px;
+  position: relative;
 
-      position: relative;
-    }
+  padding-bottom: 65px;
+}
 
     .book {
 
@@ -607,21 +607,23 @@
       position: relative;
     }
 
-    .page {
+   .page {
+  display: none;
 
-      display: none;
+  position: relative;
 
-      min-height: 610px;
+  min-height: 610px;
 
-      padding:
-        55px
-        clamp(25px,7vw,75px);
+  padding:
+    55px
+    clamp(25px,7vw,75px);
 
-      text-align: center;
+  padding-bottom: 75px;
 
-      animation:
-        pageIn .5s ease;
-    }
+  text-align: center;
+
+  animation: pageIn .5s ease;
+}
 
     .page.active {
 
@@ -654,17 +656,21 @@
     }
 
     .page-number {
+  position: absolute;
 
-      position: absolute;
+  bottom: 25px;
+  left: 50%;
 
-      bottom: 18px;
+  transform: translateX(-50%);
 
-      font-size: 11px;
+  font-size: 11px;
 
-      color: #c494a4;
+  color: #c494a4;
 
-      letter-spacing: 2px;
-    }
+  letter-spacing: 2px;
+
+  z-index: 2;
+}
 
     .chapter {
 
@@ -1222,57 +1228,24 @@
     ======================================== */
 
     .navigation {
+  position: absolute;
 
-      position: absolute;
+  left: 50%;
 
-      left: 50%;
+  transform: translateX(-50%);
 
-      transform:
-        translateX(-50%);
+  bottom: -62px;
 
-      bottom: -5px;
+  width: 100%;
 
-      width: 100%;
+  display: flex;
 
-      display: flex;
+  justify-content: center;
 
-      justify-content: center;
+  gap: 12px;
 
-      gap: 12px;
-
-      z-index: 5;
-    }
-
-    .nav-btn {
-
-      border: none;
-
-      background: white;
-
-      color: #9a5e75;
-
-      padding:
-        11px 20px;
-
-      border-radius: 999px;
-
-      cursor: pointer;
-
-      font-weight: 700;
-
-      box-shadow:
-        0 8px 25px
-        rgba(155,88,110,.15);
-    }
-
-    .nav-btn:disabled {
-
-      opacity: .35;
-
-      cursor:
-        not-allowed;
-    }
-
+  z-index: 10;
+}
 
     /* ========================================
        MOBILE
