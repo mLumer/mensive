@@ -58,6 +58,100 @@
       font-family: inherit;
     }
 
+    /* SECRET CARDS */
+
+.secret-subtitle {
+  font-size: 12px !important;
+  color: #b78392 !important;
+  margin-bottom: 18px;
+}
+
+.secret-list {
+  width: min(550px, 100%);
+  display: grid;
+  gap: 10px;
+}
+
+.secret-card {
+  position: relative;
+  width: 100%;
+  min-height: 58px;
+
+  border: 1px solid #f0cbd6;
+  border-radius: 15px;
+
+  background: #fff0f5;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  padding: 0;
+
+  transition: .3s ease;
+
+  text-align: center;
+}
+
+.secret-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180, 100, 125, .12);
+}
+
+.secret-cover {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 58px;
+
+  color: #c77e96;
+
+  font-size: 22px;
+
+  transition: .4s ease;
+}
+
+.secret-text {
+  display: none;
+
+  padding: 16px 20px;
+
+  color: #825665;
+
+  font-family: "DM Serif Display", serif;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+.secret-card.open .secret-cover {
+  display: none;
+}
+
+.secret-card.open .secret-text {
+  display: block;
+
+  animation: secretReveal .4s ease;
+}
+
+.secret-card.open {
+  background: #fff8fa;
+}
+
+@keyframes secretReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     /* ========================================
        FLOATING HEARTS
@@ -1126,75 +1220,62 @@
              PAGE 2
         ================================== -->
 
-        <div class="page">
+    
+<!-- PAGE 2 -->
+<div class="page">
 
-          <div class="chapter">
+  <div class="chapter">
+    chapter two
+  </div>
 
-            chapter two
+  <h3>
+    our little secrets.
+  </h3>
 
-          </div>
+  <p class="secret-subtitle">
+    tap each one ♡
+  </p>
 
+  <div class="secret-list">
 
-          <h3>
+    <button class="secret-card" onclick="revealSecret(this)">
+      <span class="secret-cover">♡</span>
+      <span class="secret-text">
+        somehow, talking to you never really gets boring.
+      </span>
+    </button>
 
-            Little things I love
+    <button class="secret-card" onclick="revealSecret(this)">
+      <span class="secret-cover">♡</span>
+      <span class="secret-text">
+        even the most random moments with you somehow
+        become my favorite ones.
+      </span>
+    </button>
 
-          </h3>
+    <button class="secret-card" onclick="revealSecret(this)">
+      <span class="secret-cover">♡</span>
+      <span class="secret-text">
+        i love how we have our own little world that
+        only makes sense to us.
+      </span>
+    </button>
 
+    <button class="secret-card" onclick="revealSecret(this)">
+      <span class="secret-cover">♡</span>
+      <span class="secret-text">
+        sometimes i don't need anything special.
+        having you around is already enough, saayang
+      </span>
+    </button>
 
-          <div class="reasons">
+  </div>
 
+  <div class="page-number">
+    02
+  </div>
 
-            <div class="reason">
-
-              ♡ The way you make ordinary days
-              feel special.
-
-            </div>
-
-
-            <div class="reason">
-
-              ♡ The little things you do
-              without realizing.
-
-            </div>
-
-
-            <div class="reason">
-
-              ♡ Your presence, even when
-              we're doing nothing.
-
-            </div>
-
-
-            <div class="reason">
-
-              ♡ The way you make me
-              feel cared for.
-
-            </div>
-
-
-            <div class="reason">
-
-              ♡ Simply being able to
-              call you mine.
-
-            </div>
-
-
-          </div>
-
-
-          <div class="page-number">
-
-            02
-
-          </div>
-
-        </div>
+</div>
 
 
         <!-- ==================================
@@ -1274,54 +1355,51 @@
              PAGE 4
         ================================== -->
 
-        <div class="page">
+      
+<div class="page">
 
-          <div class="chapter">
+  <div class="chapter">
+    chapter four
+  </div>
 
-            chapter four
+  <h3>
+    two months with you.
+  </h3>
 
-          </div>
+  <p>
+    two months already.
 
+    <br><br>
 
-          <h3>
+    it still feels a little unreal how someone
+    who was once just a stranger slowly became
+    someone i look for every day.
 
-            154 days.
+    <br><br>
 
-          </h3>
+    we've had our silly moments, our random
+    conversations, our little misunderstandings,
+    and so many moments that only make sense
+    to the two of us.
 
+    <br><br>
 
-          <p>
+    and if these two months are only the beginning,
+    then i'm really looking forward to everything
+    that's still waiting for us, aa sayangg
 
-            154 days of knowing you.
+  </p>
 
-            <br><br>
+  <div class="date">
+    two months of us ♡
+  </div>
 
-            154 days of little conversations,
-            silly moments, random stories,
-            and memories that slowly became ours.
+  <div class="page-number">
+    04
+  </div>
 
-            <br><br>
-
-            And somehow, I still want
-            to know every version of you.
-
-          </p>
-
-
-          <div class="date">
-
-            154 DAYS ♡
-
-          </div>
-
-
-          <div class="page-number">
-
-            04
-
-          </div>
-
-        </div>
+</div>
+```
 
 
         <!-- ==================================
@@ -1343,60 +1421,60 @@
 
           </h3>
 
-          ```html
+          
 <div class="letter">
 
   Happy 2nd mensive, my love. ♡
 
   <br><br>
 
-  I honestly don't know how to put everything I feel
-  into words, but I just want you to know how grateful
-  I am to have you in my life. These past two months
+  i honestly don't know how to put everything i feel
+  into words, but i just want you to know how grateful
+  i am to have you in my life. these past two months
   may seem short, but you've already given me so many
-  little moments that I'll always want to remember.
+  little moments thaat i'll always want to remember, sayang.
 
   <br><br>
 
-  Thank you for staying with me, for listening to my
-  random stories, my silly thoughts, my complaints,
-  and all the little things I tell you every day.
-  Thank you for being patient with me, for making me
-  laugh, and for being someone I can always come back to.
+  mungkin aa muak bacanya but thank you for staying 
+  with me, for listening to my random stories, my 
+  silly thoughts, my complaints, and all the little 
+  things i tell you every daay :D. thank you for being 
+  patient with me, for making me laugh, and for being 
+  someone that i can always come back to and lay on.
 
   <br><br>
 
-  I know we're not perfect. Sometimes we misunderstand
+  i know we're not perfect, sayang. sometimes we misunderstand
   each other, sometimes things get complicated, and
   sometimes we don't know how to say what we're feeling.
-  But even through those moments, I'm still glad that
-  it's you I'm going through all of this with.
+  but even through those moments, i'm still glad that
+  it's you i'm going through all of this with.
 
   <br><br>
 
-  I hope we keep choosing each other, keep learning
+  i hope we keep choosing each other, keep learning
   about each other, and keep making little memories
-  together. I don't need everything to be perfect.
-  I just want us to keep growing, laughing, talking,
-  and loving each other in our own way.
+  together ya sayang. i don't need everything to be 
+  perfect. i just want us to keep growing, laughing,
+  talking, and loving each other in our best own way.
 
   <br><br>
 
-  I'm really happy that I get to call you mine.
-  Thank you for becoming one of the most special parts
+  i'm really happy that I get to call you mine.
+  thank you for becoming one of the most special parts
   of my life, and thank you for making these ordinary
   days feel a little more beautiful just by being in them.
 
   <br><br>
 
-  Happy 2nd mensive, sayang.
-  I love you more than I could ever fit into one little
-  letter like this. Here's to us, and to all the moments
+  Happy 2nd mensive, sayangku.
+  i love you more than i could ever fit into one little
+  letter like this. here's to us, and to all the moments
   we still haven't made yet. ♡
 
   <div class="signature">
-    sayangku, cintaku, <br> 
-    manis lucu luguku ♡
+    With love, Junoel ♡ <br>
   </div>
 
 </div>
@@ -1453,7 +1531,7 @@
 
           <div class="date">
 
-            HAPPY 2ND MENSIVE
+            HAPPY 2ND MENSIVE, AA SAYANG
 
           </div>
 
