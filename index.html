@@ -1069,27 +1069,27 @@
   inset: 0;
 
   display: none;
-
   align-items: center;
   justify-content: center;
 
   background:
     radial-gradient(
-      circle,
-      #fff0f6,
-      #f5c1d2
+      circle at center,
+      #fff8fb 0%,
+      #ffe6ef 45%,
+      #f4c0d2 100%
     );
 
-  z-index: 100;
+  z-index: 9999;
   overflow: hidden;
 }
 
 .final-overlay.active {
   display: flex;
-  animation: finalFade .8s ease;
+  animation: finalAppear .8s ease forwards;
 }
 
-@keyframes finalFade {
+@keyframes finalAppear {
   from {
     opacity: 0;
   }
@@ -1100,27 +1100,47 @@
 }
 
 .final-content {
-  width: min(650px,90%);
+  width: min(700px, 90%);
   text-align: center;
+
   position: relative;
   z-index: 2;
+
+  animation: finalContent .9s ease .2s both;
+}
+
+@keyframes finalContent {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .final-content .big-heart {
-  font-size: 55px;
+  font-size: 65px;
+  color: #d88da8;
+
   animation: heartbeat 1.5s infinite;
+}
+
+.final-content .eyebrow {
+  margin-top: 15px;
 }
 
 .final-content h2 {
   font-family: "DM Serif Display", serif;
-
-  font-size: clamp(40px,9vw,70px);
-
   font-weight: 400;
 
-  color: #965a72;
+  font-size: clamp(38px, 8vw, 68px);
 
-  line-height: 1.05;
+  line-height: 1.1;
+
+  color: #965a72;
 
   margin: 20px 0;
 }
@@ -1128,45 +1148,74 @@
 .final-content p {
   font-family: "DM Serif Display", serif;
 
-  font-size: 22px;
-
-  line-height: 1.6;
+  font-size: 23px;
 
   color: #7c5261;
+
+  line-height: 1.6;
 }
 
 .final-content .tiny {
-  margin-top: 20px;
+  max-width: 430px;
 
-  font-family: "Quicksand", sans-serif;
+  margin: 20px auto 0;
 
-  font-size: 12px;
+  font-size: 13px;
+
+  line-height: 1.7;
 
   color: #a77384;
 }
 
-.final-open-btn {
-  margin-top: 25px;
 
-  border: none;
+/* FLOATING FINAL HEARTS */
 
-  background: #d992ab;
+.final-hearts::before,
+.final-hearts::after {
+  content: "♡  ♥  ♡  ♡  ♥  ♡";
 
-  color: white;
+  position: absolute;
 
-  padding: 13px 25px;
+  width: 100%;
 
-  border-radius: 999px;
+  left: 0;
 
-  font-weight: 700;
+  text-align: center;
 
-  cursor: pointer;
+  color: rgba(210, 125, 153, .25);
 
-  transition: .25s;
+  font-size: 35px;
+
+  letter-spacing: 30px;
+
+  animation: finalFloat 8s linear infinite;
 }
 
-.final-open-btn:hover {
-  transform: translateY(-3px);
+.final-hearts::before {
+  bottom: -50px;
+}
+
+.final-hearts::after {
+  bottom: -100px;
+  animation-delay: 3s;
+}
+
+@keyframes finalFloat {
+
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+
 }
     
     /* ========================================
@@ -1933,57 +1982,29 @@
              PAGE 7
         ================================== -->
 
-        <div class="page">
+<div class="page">
 
-          <div class="chapter">
+  <div class="chapter">
+    the end?
+  </div>
 
-            the end?
+  <h2>wait...</h2>
 
-          </div>
+  <p>
+    one more thing ♡
+  </p>
 
+  <button
+    class="final-open-btn"
+    onclick="openFinal()">
+    open it ♡
+  </button>
 
-          <h2>
+  <div class="page-number">
+    07
+  </div>
 
-            Not really.
-
-          </h2>
-
-
-          <p>
-
-            This may be the last page
-            of this little book,
-
-            <br><br>
-
-            but hopefully it's nowhere near
-            the end of our story.
-
-            <br><br>
-
-            Thank you for being
-            my favorite chapter. ♡
-
-          </p>
-
-
-          <div class="date">
-
-            HAPPY 2ND MENSIVE, AA SAYANG
-
-          </div>
-
-
-          <div class="page-number">
-
-            07
-
-          </div>
-
-        </div>
-
-
-      </div>
+</div>
 
 
       <!-- ==================================
@@ -2649,29 +2670,33 @@ function closeDateGame() {
 
 function openFinal() {
 
-  const overlay =
+  const finalOverlay =
     document.getElementById("finalOverlay");
 
-  overlay.classList.add("active");
+  if (!finalOverlay) {
+    console.log("finalOverlay tidak ditemukan");
+    return;
+  }
+
+  finalOverlay.classList.add("active");
 
   createHeartBurst();
-
 }
     
   </script>
 
-  <!-- ========================================
-     FINAL SURPRISE
-======================================== -->
+<!-- FINAL SURPRISE -->
 
-<div
-  class="final-overlay"
-  id="finalOverlay">
+<div id="finalOverlay" class="final-overlay">
+
+  <div class="final-hearts"></div>
 
   <div class="final-content">
 
-    <div class="big-heart">
-      ♡
+    <div class="big-heart">♡</div>
+
+    <div class="eyebrow">
+      one last thing...
     </div>
 
     <h2>
@@ -2684,8 +2709,7 @@ function openFinal() {
     </p>
 
     <div class="tiny">
-      here's to us, and to everything
-      that's still waiting for us.
+      i lovee you so much.
     </div>
 
   </div>
